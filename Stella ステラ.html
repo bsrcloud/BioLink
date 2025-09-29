@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="id">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/5e9eda5104.js" crossorigin="anonymous"></script>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' rel='stylesheet'/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stella ステラ — Cosplayer</title>
+  <meta name="description" content="Stella — Cosplayer. Link bio, Instagram & kontak." />
+
+  <style>
+    :root{
+      --bg:#f8f6f9;
+      --card:#ffffff;
+      --muted:#7b7b8a;
+      --accent:#ff5ca8;
+      --accent-2:#7b61ff;
+      --shadow: 0 8px 30px rgba(28,28,38,0.08);
+      --glass: rgba(255,255,255,0.6);
+      --maxw:420px;
+      --radius:16px;
+      --text:#1b1b24;
+      --transition: 300ms cubic-bezier(.2,.9,.2,1);
+    }
+    [data-theme="dark"]{
+      --bg:#0b0b10;
+      --card:#0f1014;
+      --muted:#b6b6c2;
+      --accent:#ff77b8;
+      --accent-2:#ad9bff;
+      --shadow: 0 12px 40px rgba(2,2,8,0.6);
+      --glass: rgba(255,255,255,0.03);
+      --text:#e9e9ef;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1000px 400px at 10% 10%, rgba(123,97,255,0.06), transparent),
+                  radial-gradient(800px 300px at 90% 90%, rgba(255,92,168,0.04), transparent),
+                  var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:14px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+      margin:10px auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0.12)) ;
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.06);
+      position:relative;
+    }
+
+    header{
+      padding:28px 20px 16px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:12px;
+    }
+
+    /* Profile image: circular, default is data-uri SVG (changeable) */
+    .avatar{
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      border:4px solid rgba(255,255,255,0.18);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow:hidden;
+      transform: translateY(-6px) scale(.98);
+      transition: transform var(--transition);
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .avatar:hover{ transform: translateY(-8px) scale(1); }
+
+    h1{
+      font-size:20px;
+      margin:0;
+      letter-spacing:0.2px;
+    }
+    p.role{
+      margin:0;
+      font-size:13px;
+      color:#ff5ca8;
+    }
+
+    .links{
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      border-radius:14px;
+      padding:12px 14px;
+      text-decoration:none;
+      color:var(--text);
+      box-shadow: none;
+      border:1px solid rgba(0,0,0,0.04);
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      position:relative;
+      overflow:hidden;
+    }
+    .btn .icon{
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      flex-shrink:0;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    }
+    .btn:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+    .btn small{ display:block; color:var(--muted); font-size:12px; margin-top:2px; }
+
+    /* ripple effect */
+    .btn .ripple {
+      position:absolute;
+      border-radius:50%;
+      transform:scale(0);
+      animation:ripple 700ms linear;
+      background:rgba(255,255,255,0.18);
+      pointer-events:none;
+    }
+    @keyframes ripple {
+      to { transform:scale(6); opacity:0; }
+    }
+
+    /* Feed grid (placeholders) */
+    .feed{
+      padding:16px 18px 26px;
+    }
+    .feed h3{
+      margin:0 0 12px 0;
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:8px;
+    }
+    .post{
+      width:100%;
+      aspect-ratio:1/1;
+      border-radius:10px;
+      overflow:hidden;
+      background:linear-gradient(135deg, rgba(0,0,0,0.06), rgba(255,255,255,0.02));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:600;
+      position:relative;
+      cursor:pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .post img {width :100%;}
+    
+    .post .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.18));
+      display:flex;
+      align-items:flex-end;
+      padding:8px;
+      font-size:11px;
+    }
+    .post:hover{ transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+    .controls{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,0.04);
+      font-size:13px;
+      color:var(--muted);
+      cursor:pointer;
+      transition: transform var(--transition);
+    }
+    .pill:hover{ transform: translateY(-4px); }
+
+    footer{
+      padding:12px 18px;
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
+      border-top:1px solid rgba(0,0,0,0.04);
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.02));
+    }
+
+    /* floating badge (follow) */
+    .float-badge{
+      position:fixed;
+      right:18px;
+      bottom:24px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:white;
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:999px;
+      box-shadow: 0 14px 38px rgba(123,97,255,0.18);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      cursor:pointer;
+      transform-origin:center;
+      animation: floaty 3s ease-in-out infinite;
+      z-index:60;
+    }
+    @keyframes floaty{
+      0%{ transform:translateY(0) }
+      50%{ transform:translateY(-8px) }
+      100%{ transform:translateY(0) }
+    }
+
+    /* Theme toggle button */
+    .theme-toggle{
+      position:absolute;
+      top:12px;
+      right:12px;
+      background:transparent;
+      border:none;
+      padding:8px;
+      border-radius:10px;
+      cursor:pointer;
+      backdrop-filter: blur(6px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition: transform var(--transition);
+    }
+    .theme-toggle:hover{ transform: scale(1.06); }
+
+    /* entrance animations (stagger) */
+    .avatar, h1, p.role, .btn, .feed{ opacity:0; transform: translateY(18px); }
+    .in { opacity:1; transform:translateY(0); transition: all 500ms cubic-bezier(.2,.9,.2,1); }
+
+    /* responsive tweak */
+    @media (max-width:420px){
+      .avatar{ width:96px; height:96px; }
+      .btn .icon{ width:40px; height:40px; }
+      .wrap{ margin:12px 6px; border-radius:12px; }
+    }
+    @media (min-width:900px){
+      body{ padding:40px; align-items:flex-start; }
+      .wrap{ margin-top:40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main" aria-labelledby="profile-name">
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+      <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--muted)">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+
+    <header>
+      <!--
+        Ganti gambar profil: ubah atribut src di tag <img> di bawah.
+        Default memakai data URI SVG sehingga tidak perlu file eksternal.
+        Jika ingin menggunakan file: ganti src="data:...svg" menjadi src="path/to/avatar.jpg"
+      -->
+      <div class="avatar" id="avatar">
+        <img id="profileImg" alt="Stella profile avatar"
+             src='https://blogger.googleusercontent.com/img/a/AVvXsEjQFI2W0CkizjvxgRHxdNAj6ZuFVqCvHCA6_-fV6LaF5ynEpDHpEWqB49Hj-T__ACebpLQRa06L-bnQbEPFhUWF-t8Wvj8xB8NkPmZgDibY4ySc4CaEBO0GTnPE3DYti794m3nVjJJ8gXrKUnTuJXfvaFhJiC9ZQw3u2Ux15HuClldyqxScM-AtMSQoKMo'
+             <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+               <defs>
+                 <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                   <stop offset="0" stop-color="%23ff5ca8"/>
+                   <stop offset="1" stop-color="%237b61ff"/>
+                 </linearGradient>
+               </defs>
+               <rect width="100%" height="100%" fill="url(%23g)"/>
+               <g transform="translate(50,60)">
+                 <circle cx="150" cy="90" r="70" fill="%23fff" opacity="0.08"/>
+                 <circle cx="150" cy="120" r="72" fill="%23fff" opacity="0.08"/>
+                 <g fill="%23fff" opacity="0.95">
+                   <path d="M110 150c16-20 80-20 96 0v50h-96z"/>
+                 </g>
+               </g>
+             </svg>' />
+      </div>
+
+      <!--
+        Ganti nama & deskripsi di bawah jika perlu:
+        Nama: ganti teks 'Stella'
+        Deskripsi: ganti teks 'Cosplayer'
+      -->
+      <h1 id="profile-name">Stella ステラ</h1>
+      <div class="role">🇲🇾 Cosplayer</div>
+    </header>
+
+    <div class="links">
+      <!-- Instagram button (prominent) -->
+      <a class="btn" id="instagramBtn" href="https://www.instagram.com/stella.c02" target="_blank" rel="noopener noreferrer">
+        <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+        <div style="flex:1">
+          <div style="font-weight:700">@stella.c02</div>
+          <small>instagram.com/stella.c02</small>
+        </div>
+      </a>
+
+      <!-- Email button (mailto) -->
+      <a class="btn" id="emailBtn" href="mailto:stellaaac02@gmail.com">
+        <div class="icon" style="background:linear-gradient(135deg,#33d1ff,#7b61ff)">✉️</div>
+        <div style="flex:1">
+          <div style="font-weight:700">Email for job enquiry</div>
+          <small>stellaaac02@gmail.com</small>
+        </div>
+      </a>
+    </div>
+
+    <section class="feed" aria-labelledby="feedTitle">
+      <h3 id="feedTitle">
+        maybe you like?
+        <div class="controls">
+          <button class="pill" id="loadFeedBtn"><span class="material-symbols-outlined">
+heart_smile
+</span></button>
+        </div>
+      </h3>
+
+      <!--
+        NOTE: Placeholder grid berikut menampilkan 6 postingan yang menautkan ke profil IG.
+        Untuk mengganti placeholder dengan feed asli, lihat komentar di bagian bawah HTML
+        (instruksi untuk Instagram Basic Display API atau widget pihak ketiga).
+      -->
+      <div class="grid" id="feedGrid" aria-hidden="false">
+        <!-- 6 placeholder posts -->
+        <a class="post" href="https://www.instagram.com/stella.c02" target="_blank" rel="noopener noreferrer" aria-label="Post 1">
+          <img alt="" border="0" data-original-height="1920" data-original-width="1440" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizglWMNQPXOXP_xfrYevqvXiVpXtIPStMr_YptrL_TnAS8OtirLMpVrq9uWSkyg77bizQ0D2Vg64U8_Tr7ViSyI7jpRK_iJ3c0nDYbD0p4pTyZJiLHgqT4ZuSZAJmZ5p_ZyZwCOa7g5K903dIYYurxc3O9hqOxWgLjWb_pZ55ZHLfs23V2VLVgss0pa1M/s1600/1000580328.jpg" />
+          <div class="overlay">@stella.c02</div>
+        </a>
+        <a class="post" href="https://www.instagram.com/stella.c02" target="_blank" rel="noopener noreferrer" aria-label="Post 2">
+          <img alt="" border="0" data-original-height="1920" data-original-width="1440" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCP5m-4_dB3_FptsP-jQNfmCUPH8awB-rzIHn77h-LhR7IPj-kCwojU8JDaHCnyj0u5TSNreFytOWYv4SurDziso9bVXe4W4agN-xCrxrUFPjrXb87cLAyzkDhsc28sTvH2Y71jHch1U1OYsPbrpYszMeAudYbGaJcbVal7MKOMEpYt5WDyuZLnQ3UOo8/s1600/1000580327.jpg" />
+          <div class="overlay">@stella.c02</div>
+        </a>
+        <a class="post" href="https://www.instagram.com/stella.c02" target="_blank" rel="noopener noreferrer" aria-label="Post 3">
+          <img alt="" border="0" data-original-height="1920" data-original-width="1440" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEio70qZQtVm1vyCWFZpd_F2voNyvZI6rR5gKLi-u-aIWbDZ_r88SCzAr8YPIPEjpy9Bv2yGrnZTITaHn1ZLSeX9eyN0-jp4LVKpuM8QTiY9BOhB5UY498a6IO1rYlAp6NTCLCUhXDHKStSgrj5JFUK5rwdNyDSad8yvNFPl4E5JJmnWP0DA7RjlAhinJZQ/s1600/1000580326.jpg" />
+          <div class="overlay">@stella.c02</div>
+        </a>
+        <a class="post" href="https://www.instagram.com/stella.c02" target="_blank" rel="noopener noreferrer" aria-label="Post 4">
+          <img alt="" border="0" data-original-height="1920" data-original-width="1440" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiE9bsogDOYzeenve7GtNZVsL_YhpQVC71iRzYe0djnnTJ8dxohsAuh7xnD9wJ8Qz4Nc-ValPlF0NmJD1ybirgCQz2cIq3WAhUzSc1iqO0JrX8yxI8JJLfr5oFjaSYj_88cP_yecFRbsg8CW5ECFRxOwAny5slAvfcyrT9EDkNeUOxrnux3yoZ-VERy5Bs/s1600/1000580325.jpg" />
+          <div class="overlay">@stella.c02</div>
+        </a>
+        <a class="post" href="https://www.instagram.com/stella.c02" target="_blank" rel="noopener noreferrer" aria-label="Post 5">
+          <img alt="" border="0" data-original-height="1920" data-original-width="1440" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6iiyL8M4V0wl27JdcGOQjKv1Uaq32HQzeDSIOro4gaORw7Nij1mVIwcp5rVsQda_uSd-l9dzuLCr6pm64ExuvcRipZu7Zs_wqkbIUrC9BaihZQTNKSWLYrEuWud1JEFlqRZ1onLikHWWP5DbLN9ZYNUMshmlytdUiVTC1kxa4ye_d2xslMXSw6OfvpOc/s1600/1000580324.jpg" />
+          <div class="overlay">@stella.c02</div>
+        </a>
+        <a class="post" href="https://www.instagram.com/stella.c02" target="_blank" rel="noopener noreferrer" aria-label="Post 6">
+          <img alt="" border="0" data-original-height="1920" data-original-width="1440" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhu1WbxnrURpNPQbJlNDE_pvo262dAg87kS1s7y_hXiotxPmF8cpqIAPdQF0KHWaId50v8nKXf6K0ElZWfCcVOrh0erbeg9164TsOfqdmWCdNu7ynBTUPuaTKsjMbO_KboQEUYj-okUnoDIIiK7S5ek_pogn0dMZzSM0bQoX8AdH7oTYJNC02w7x6JIjWo/s1600/1000580323.jpg" />
+          <div class="overlay">@stella.c02</div>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      Powered by BSrifa
+    </footer>
+  </div>
+
+  <!-- Floating follow badge -->
+  <a class="float-badge" href="https://www.instagram.com/stella.c02" target="_blank" rel="noopener noreferrer" title="Follow @stella.c02">
+    <strong><i class="fa-brands fa-instagram"></i> Follow</strong>
+    <span style="opacity:.9">@stella.c02</span>
+  </a>
+
+  <script>
+    // ---------------------------
+    // Interaction & animations
+    // ---------------------------
+    const avatar = document.getElementById('avatar');
+    const profileImg = document.getElementById('profileImg');
+    const buttons = document.querySelectorAll('.btn');
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const loadFeedBtn = document.getElementById('loadFeedBtn');
+
+    // Entrance stagger
+    window.addEventListener('load', () => {
+      setTimeout(()=> avatar.classList.add('in'), 80);
+      setTimeout(()=> document.querySelector('h1').classList.add('in'), 160);
+      setTimeout(()=> document.querySelector('.role').classList.add('in'), 240);
+      document.querySelectorAll('.btn').forEach((b,i)=>{
+        setTimeout(()=> b.classList.add('in'), 320 + i*80);
+      });
+      setTimeout(()=> document.querySelector('.feed').classList.add('in'), 700);
+    });
+
+    // Button ripple effect
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function(e){
+        const rect = this.getBoundingClientRect();
+        const circle = document.createElement('span');
+        circle.classList.add('ripple');
+        const size = Math.max(rect.width, rect.height);
+        circle.style.width = circle.style.height = size + 'px';
+        circle.style.left = (e.clientX - rect.left - size/2) + 'px';
+        circle.style.top = (e.clientY - rect.top - size/2) + 'px';
+        this.appendChild(circle);
+        setTimeout(()=> circle.remove(), 700);
+      });
+    });
+
+    // Theme toggle (light/dark) with persistent setting
+    function setTheme(t){
+      if(t === 'dark'){
+        document.documentElement.setAttribute('data-theme','dark');
+        themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeIcon.innerHTML = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+      }
+      try { localStorage.setItem('biolink_theme', t); } catch(e){}
+    }
+    themeToggle.addEventListener('click', ()=>{
+      const current = localStorage.getItem('biolink_theme') === 'dark' ? 'dark' : 'light';
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    // init theme from localStorage or prefers-color-scheme
+    (function initTheme(){
+      const saved = localStorage.getItem('biolink_theme');
+      if(saved) setTheme(saved);
+      else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(prefersDark ? 'dark' : 'light');
+      }
+    })();
+
+    // "Load Live Feed" behaviour (demo)
+    loadFeedBtn.addEventListener('click', async (e)=>{
+      e.preventDefault();
+      // Simple user-friendly modal-like instruction (keeps page offline-friendly).
+      // In production, replace the placeholders with calls to Instagram Basic Display API,
+      // or embed a third-party widget (LightWidget, SnapWidget, etc).
+      const info = `
+Jika kamu suka dengan Cosplayer @stellaaa.c02
+Jangan lupa untuk mengikuti nya di Instagram resmi nya dengan username @stellaaa.c02
+Klik ikon Lonceng untuk mendapatkan notifikasi terupdate dari Stella ステラ
+Berikan dukungan mu dengan Like setiap postingan dari Stella ステラ
+
+
+Email for job enquiry:
+stellaaac02@gmail.com
+
+(klik OK untuk menutup.)
+`;
+      alert(info);
+    });
+
+    // Keyboard accessibility: Enter triggers buttons ripple/links naturally.
+    // ---------------------------
+    // Accessibility & replace notes
+    // ---------------------------
+    /*
+      TODO / Catatan untuk developer:
+      - Ganti gambar profil: ubah atribut src pada tag <img id="profileImg">.
+        Contoh: src="assets/stella.jpg"
+      - Ganti nama/deskripsi: ubah teks di <h1 id="profile-name"> dan <p class="role">.
+      - Ganti tautan Instagram: ubah href pada #instagramBtn dan seluruh tempat yang merujuk ke https://www.instagram.com/stella.c02
+      - Email: ubah href mailto: pada #emailBtn
+      - Mengaktifkan live feed (ringkasan):
+        * Instagram Basic Display API: perlu mendaftarkan app di Facebook developers, dapatkan User Access Token dan panggil:
+          https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,thumbnail_url&access_token={ACCESS_TOKEN}
+        * Untuk implementasi client-side, token harus diamankan — lebih baik panggil dari server untuk menyimpan token.
+        * Alternatif: gunakan embed/iframe dari layanan pihak ketiga (lebih cepat & tanpa coding server).
+      - Contoh cepat embed (pihak ketiga): LightWidget / SnapWidget / Elfsight (masukkan script/iframe dari layanan).
+      - Profil Instagram yang direferensikan di halaman ini: https://www.instagram.com/stella.c02/
+    */
+
+    // Small UX: clicking floating badge does a subtle pop animation
+    document.querySelectorAll('.float-badge, .pill').forEach(el=>{
+      el.addEventListener('click', ()=> {
+        el.animate([{ transform: 'scale(1)' },{ transform:'scale(0.96)' },{ transform:'scale(1)' }], { duration:220 });
+      });
+    });
+  </script>
+</body>
+</html>
